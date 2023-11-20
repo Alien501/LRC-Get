@@ -15,9 +15,13 @@ function App() {
     songDur: '',
     isError: false
   })
+
+  const [isFetchPressed, setIsFetchPressed] = useState(false)
   
   const [songUrl, setSongUrl] = useState('')
   const [actk, setactk] = useState('BQAaQnftlCmXUSK2wP45ynDX2omMGdej4z6a4Jiqw3GT562UiXllsjNRqqW8k1VTfm7mXKGqcBrQDROSu9OfnU8Zfw95TqaloOcPrUFyd_VMkzNIlXo')
+
+  const [isHovered, setIsHovered] = useState(false)
 
   const getToken = async () => {
     const tokenEndpoint = 'https://accounts.spotify.com/api/token'
@@ -74,10 +78,44 @@ function App() {
               }
               else
               {
-                return {synced: 'Synced Lyrics not found!',
-              plain: 'Plain Lyrics not found!'}
+                try{
+                  const try3 = await axios.get(`https://spotify-lyric-api-984e7b4face0.herokuapp.com/?url=${songUrl}&format=lrc`)
+                  if(try3.status == 200){
+                    if(try3.data.error === false && try3.data.syncType === "LINE_SYNCED"){
+                      return{
+                        synced: try3.data.lines.map(
+                          (lyricObj, key) => <div id={key}>{`[${lyricObj.timeTag}] ${lyricObj.words}`}</div>
+                        ),
+                        plain: try3.data.lines.map(
+                          (lyricObj, key) => <div id={key}>{`${lyricObj.words}`}</div>
+                        )
+                      }
+                    }else if(try3.data.error === false && try3.data.syncType === "UNSYNCED"){
+                      return{
+                        synced: 'Synced Lyrics Not Found!',
+                        plain: try3.data.lines.map(
+                          (lyricObj, key) => <div id={key}>{`${lyricObj.words}`}</div>
+                        )
+                      }
+                    }else{
+                      lo
+                          return {synced: 'Synced Lyrics not found!',
+                      plain: 'Plain Lyrics not found!'}
+                    }
+                  }
+                  else if(try3.status === 404){
+                    return {synced: 'Synced Lyrics not found!',
+                  plain: 'Plain Lyrics not found!'}
+                  }
+                }catch(error){
+                  return {synced: 'Synced Lyrics not found!',
+        plain: 'Plain Lyrics not found!'}
+                }
               }
             }
+      } else{
+        return {synced: 'Synced Lyrics not found!',
+        plain: 'Plain Lyrics not found!'}
       }
     }catch(error){
       return 'Something went Wrong!' + error
@@ -126,7 +164,6 @@ function App() {
       )
     }
     catch (error) {
-      // console.log("Change 2" + error);
       setSongData(prevData => {
         return {
           ...prevData,
@@ -135,6 +172,34 @@ function App() {
         }
       })
     }
+
+    setIsFetchPressed(true)
+  }
+
+  function copyClicked(event) {
+    const lyricText = (event.target.name === 'synced')? songData.songLyricsSynced.map(
+      (lyrics, key) => lyrics.props.children + '\n'
+    ).join(''): songData.songLyricsPlain.map(
+      (lyrics, key) => lyrics.props.children + '\n'
+    ).join('')
+    navigator.clipboard.writeText(lyricText)
+  }
+
+  function downloadClicked(event) {
+    const lyricText = (event.target.name === 'synced')? songData.songLyricsSynced.map(
+      (lyrics, key) => lyrics.props.children + '\n'
+    ).join(''): songData.songLyricsPlain.map(
+      (lyrics, key) => lyrics.props.children + '\n'
+    ).join('')
+
+    const blob = new Blob([lyricText], {type: 'text/plain'})
+    const url = URL.createObjectURL(blob)
+
+    const file = document.createElement('a')
+    file.href = url
+    file.download = `${songData.songName}.${event.target.name === 'synced'?'lrc':'txt'}`
+    file.click()
+    URL.revokeObjectURL(url)
   }
 
   return (
@@ -159,10 +224,19 @@ function App() {
         </div>
       </div>
 
-      <div className="fetched-lyric-container">
+      <div className="fetched-lyric-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className="fake-cont">
+          {(isFetchPressed && isHovered) && <button className="copy-content primary-btn" name='synced' onClick={copyClicked}>COPY</button>}
+          {(isFetchPressed && isHovered) && <button className="download-content primary-btn" name='synced' onClick={downloadClicked}>DOWNLOAD</button>}
+        </div>
         {songData.songLyricsSynced && songData.songLyricsSynced}
       </div>
-      <div className="fetched-lyric-container">
+
+      <div className="fetched-lyric-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className="fake-cont">
+          {(isFetchPressed && isHovered) && <button className="copy-content primary-btn" name='plain' onClick={copyClicked}>COPY</button>}
+          {(isFetchPressed && isHovered) && <button className="download-content primary-btn" name='plain' onClick={downloadClicked}>DOWNLOAD</button>}
+        </div>
         {songData.songLyricsPlain && songData.songLyricsPlain}
       </div>
 

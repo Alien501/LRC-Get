@@ -88,6 +88,7 @@ form{
     border-radius: 15px;
     padding: 20px;
     margin-top: 50px;
+    min-height: 100px;
     height: fit-content;
     line-height: 26px;
     font-weight: 500;
@@ -112,4 +113,41 @@ form{
 .footer:hover, .footer:active{
     background-color: #2911A6;
     color: #fff;
+}
+
+.primary-btn{
+    display: block;
+    background-color: #2911A6;
+    border-style: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+    position: absolute;
+    right: 10px;
+}
+
+.primary-btn:hover, .primary-btn:active{
+    outline: 2px solid #2911A6;
+    background-color: #DBEBFF;
+    color: #2911A6;
+    cursor: pointer;
+}
+
+.fake-cont{
+    width: 100%;
+    position: relative;
+}
+
+.download-content{
+    background-color: rgb(164, 17, 178);
+    top: 40px;
+}
+
+.download-content:active, .download-content:hover{
+    background-color: #DBEBFF;
+    color: rgb(164, 17, 178);
+    outline-color: rgb(164, 17, 178);
 }
