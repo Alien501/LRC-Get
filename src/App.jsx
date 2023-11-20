@@ -10,6 +10,8 @@ function App() {
     albumName: 'Album Name',
     isDataFetched: true,
     songLyrics: 'Song Lyrics',
+    songLyricsSynced: 'Synced Lyrics',
+    songLyricsPlain: 'Plain Lyrics',
     songDur: '',
     isError: false
   })
@@ -59,10 +61,22 @@ function App() {
       )
       if(lyricResponse.status === 200){
             if(lyricResponse.data.length !== 0){
-              return lyricResponse.data[0].syncedLyrics.split('\n').map((lyrics, key) => <div id={key}>{lyrics}</div>)
+              return {synced: (lyricResponse.data[0].syncedLyrics != null)?lyricResponse.data[0].syncedLyrics.split('\n').map((lyrics, key) => <div id={key}>{lyrics}</div>): 'Synced Lyrics Not Found',
+              plain: (lyricResponse.data[0].plainLyrics != null)?lyricResponse.data[0].plainLyrics.split('\n').map((lyrics, key) => <div id={key}>{lyrics}</div>): 'Plain Lyrics Not Found'}
             }
             else{
-              return 'Song Lyrics not found!'
+              const try2 = await axios.get(
+                `https://lrclib.net/api/search?q=${songName}`
+              )
+              if(try2.status === 200 && try2.data.length != 0){
+                return {synced: (try2.data[0].syncedLyrics != null)?try2.data[0].syncedLyrics.split('\n').map((lyrics, key) => <div id={key}>{lyrics}</div>): 'Synced Lyrics Not Found',
+              plain: (try2.data[0].plainLyrics != null)?try2.data[0].plainLyrics.split('\n').map((lyrics, key) => <div id={key}>{lyrics}</div>): 'Plain Lyrics Not Found'}
+              }
+              else
+              {
+                return {synced: 'Synced Lyrics not found!',
+              plain: 'Plain Lyrics not found!'}
+              }
             }
       }
     }catch(error){
@@ -86,7 +100,7 @@ function App() {
       )
       
       const newArtistName = response.data.album.artists.map(
-        artist => artist.name + ' - ',
+        artist => artist.name + ' ',
       )
 
       const newSongName = response.data.name
@@ -103,7 +117,8 @@ function App() {
             artistName: newArtistName,
             isError: false,
             songDur: newDur,
-            songLyrics: newSongLyrics,
+            songLyricsSynced: newSongLyrics.synced,
+            songLyricsPlain: newSongLyrics.plain,
             isDataFetched: true
           }
           return newSongData;
@@ -145,8 +160,13 @@ function App() {
       </div>
 
       <div className="fetched-lyric-container">
-        {songData.songLyrics && songData.songLyrics}
+        {songData.songLyricsSynced && songData.songLyricsSynced}
       </div>
+      <div className="fetched-lyric-container">
+        {songData.songLyricsPlain && songData.songLyricsPlain}
+      </div>
+
+      <a href="https://github.com/Alien501" target='_new' className="footer">Created By Alien 501 👽</a>
     </div>
   )
 }
