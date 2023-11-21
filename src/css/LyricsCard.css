@@ -1,0 +1,28 @@
+.fetched-lyric-container{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 50px;
+    min-height: 100px;
+    height: fit-content;
+    line-height: 26px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.fake-cont{
+    width: 100%;
+    position: relative;
+}
+
+.download-content{
+    background-color: rgb(164, 17, 178);
+    top: 40px;
+}
+
+.download-content:active, .download-content:hover{
+    background-color: #DBEBFF;
+    color: rgb(164, 17, 178);
+    outline-color: rgb(164, 17, 178);
+}

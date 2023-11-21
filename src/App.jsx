@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import LyricsCard from './components/LyricsCard'
+import defaultImg from './assets/android-chrome-192x192.png'
 
 function App() {
   const [songData, setSongData] = useState({
@@ -13,15 +15,14 @@ function App() {
     songLyricsSynced: 'Synced Lyrics',
     songLyricsPlain: 'Plain Lyrics',
     songDur: '',
-    isError: false
+    isError: false,
+    imageUrl: defaultImg
   })
 
   const [isFetchPressed, setIsFetchPressed] = useState(false)
   
   const [songUrl, setSongUrl] = useState('')
   const [actk, setactk] = useState('BQAaQnftlCmXUSK2wP45ynDX2omMGdej4z6a4Jiqw3GT562UiXllsjNRqqW8k1VTfm7mXKGqcBrQDROSu9OfnU8Zfw95TqaloOcPrUFyd_VMkzNIlXo')
-
-  const [isHovered, setIsHovered] = useState(false)
 
   const getToken = async () => {
     const tokenEndpoint = 'https://accounts.spotify.com/api/token'
@@ -136,18 +137,17 @@ function App() {
           }
         }
       )
-      
       const newArtistName = response.data.album.artists.map(
         artist => artist.name + ' ',
-      )
-
-      const newSongName = response.data.name
-      const newAlbumName = response.data.album.name
-      const newDur = response.data.duration_ms
-      const [newSongLyrics] = await Promise.all([getLyrics(newArtistName, response.data.name, response.data.album.name, response.data.duration_ms)])
-      setSongData(
-        prevData => {
-    
+        )
+        
+        const newImageUrl = response.data.album.images[0].url
+        const newSongName = response.data.name
+        const newAlbumName = response.data.album.name
+        const newDur = response.data.duration_ms
+        const [newSongLyrics] = await Promise.all([getLyrics(newArtistName, response.data.name, response.data.album.name, response.data.duration_ms)])
+        setSongData(
+          prevData => {
           const newSongData = {
             ...prevData,
             songName: newSongName,
@@ -157,6 +157,7 @@ function App() {
             songDur: newDur,
             songLyricsSynced: newSongLyrics.synced,
             songLyricsPlain: newSongLyrics.plain,
+            imageUrl: newImageUrl,
             isDataFetched: true
           }
           return newSongData;
@@ -211,7 +212,11 @@ function App() {
         </div>
       </form>
 
+
       <div className="song-details-container">
+        <div className="song-data-fake-container">
+          <img src={songData.imageUrl} className='song-detail-bg'/>
+        </div>
         {(!songData.isDataFetched && songData.isError) && <h3>Couldn't fetch data check with url</h3>}
        <div className="song-detail">
           {songData.songName}
@@ -223,22 +228,20 @@ function App() {
           {songData.artistName}
         </div>
       </div>
-
-      <div className="fetched-lyric-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <div className="fake-cont">
-          {(isFetchPressed && isHovered) && <button className="copy-content primary-btn" name='synced' onClick={copyClicked}>COPY</button>}
-          {(isFetchPressed && isHovered) && <button className="download-content primary-btn" name='synced' onClick={downloadClicked}>DOWNLOAD</button>}
-        </div>
-        {songData.songLyricsSynced && songData.songLyricsSynced}
-      </div>
-
-      <div className="fetched-lyric-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <div className="fake-cont">
-          {(isFetchPressed && isHovered) && <button className="copy-content primary-btn" name='plain' onClick={copyClicked}>COPY</button>}
-          {(isFetchPressed && isHovered) && <button className="download-content primary-btn" name='plain' onClick={downloadClicked}>DOWNLOAD</button>}
-        </div>
-        {songData.songLyricsPlain && songData.songLyricsPlain}
-      </div>
+      <LyricsCard
+        songLyrics={songData.songLyricsSynced}
+        isFetchPressed={isFetchPressed}
+        lyricType='synced'
+        copyClicked={copyClicked}
+        downloadClicked={downloadClicked}
+      />
+      <LyricsCard
+        songLyrics={songData.songLyricsPlain}
+        isFetchPressed={isFetchPressed}
+        lyricType='plain'
+        copyClicked={copyClicked}
+        downloadClicked={downloadClicked}
+      />
 
       <a href="https://github.com/Alien501" target='_new' className="footer">Created By Alien 501 👽</a>
     </div>
