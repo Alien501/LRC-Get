@@ -8,7 +8,18 @@
     height: fit-content;
     line-height: 26px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+.fetched-lyric-container div{
+    padding: 3px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.fetched-lyric-container div:hover{
+    background-color: var(--color-primary-bg);
+    cursor: pointer;
 }
 
 .fake-cont{
@@ -19,10 +30,11 @@
 .download-content{
     background-color: rgb(164, 17, 178);
     top: 40px;
+    outline-width: 2px;
 }
 
 .download-content:active, .download-content:hover{
-    background-color: #DBEBFF;
+    background-color: rgba(233, 147, 240, 0.289);
     color: rgb(164, 17, 178);
     outline-color: rgb(164, 17, 178);
 }

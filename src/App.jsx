@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios'
 import LyricsCard from './components/LyricsCard'
 import defaultImg from './assets/android-chrome-192x192.png'
+import HeaderTop from './components/Header'
 
 function App() {
   const [songData, setSongData] = useState({
@@ -205,6 +206,8 @@ function App() {
 
   return (
     <div className="app-container">
+      <HeaderTop />
+
       <form onSubmit={onLinkSubmit} >
         <div className="form-container">
           <input type="text" className="form-link-input" name="songUrl" placeholder='Enter Spotify URL' value={songUrl} onChange={onUrlChange}/>

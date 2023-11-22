@@ -1,11 +1,11 @@
 .app-container{
-    background-color: #DBEBFF;
+    background-color: var(--color-bg);
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 50px auto;
+    margin: 90px auto;
     transition: 0.3s;
 }
 
@@ -27,27 +27,29 @@ form{
     border-radius: 10px;
     border-style: none;
     padding: 5px;
-    outline: 1px solid #2911A6;
-    font-size: 15px;
-    font-weight: bold;
+    border: 1px solid var(--color-primary);
+    outline: 2px solid transparent;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .form-link-input::placeholder{
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     opacity: 0.5;
 }
 
 .form-link-input:focus{
-    outline-width: 2px;
+    outline-color: var(--color-primary);
 }
 
 .submit-link{
     width: 130px;
     height: 40px;
-    background-color: #2911A6;
+    background-color: var(--color-primary);
     color: #fff;
-    border: 2px solid #2911A6;
+    border: 2px solid var(--color-primary);
     border-radius: 30px;
     font-weight: 700;
     margin-top: 10px;
@@ -56,8 +58,8 @@ form{
 
 .submit-link:active, .submit-link:hover{
     cursor: pointer;
-    background-color: #DBEBFF;
-    color: #2911A6;
+    background-color: var(--color-bg);
+    color: var(--color-primary);
 }
 
 .song-details-container{
@@ -69,7 +71,7 @@ form{
     height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 50px;
     font-weight: 500;
@@ -82,9 +84,15 @@ form{
     text-align: center;
     text-wrap: wrap;
     font-weight: 700;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-top: 8px;
 }
 
-
+.song-detail:hover{
+    cursor: pointer;
+    background-color: var(--color-primary-bg);
+}
 
 .footer{
     display: block;
@@ -94,7 +102,7 @@ form{
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    color: #2911A6;
+    color: var(--color-primary);
     padding: 5px;
     background-color: #fff;
     border-radius: 5px;
@@ -102,13 +110,13 @@ form{
 }
 
 .footer:hover, .footer:active{
-    background-color: #2911A6;
+    background-color: var(--color-primary);
     color: #fff;
 }
 
 .primary-btn{
     display: block;
-    background-color: #2911A6;
+    background-color: var(--color-primary);
     border-style: none;
     border-radius: 5px;
     padding: 5px;
@@ -118,14 +126,14 @@ form{
     transition: 0.3s;
     position: absolute;
     right: 10px;
-    outline-width: 2px;
-    animation: fadeIn 0.5s ease-in-out  1  ;
+    outline: 2px solid transparent;
+    animation: fadeIn 0.3s ease-in-out  1  ;
 }
 
 .primary-btn:hover, .primary-btn:active{
-    outline: 2px solid #2911A6;
-    background-color: #DBEBFF;
-    color: #2911A6;
+    outline: 2px solid var(--color-primary);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
     cursor: pointer;
 }
 
@@ -139,6 +147,7 @@ form{
     background-color: #fff;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.237);
     border-style: none;
+    animation: fadeIn 0.3s ease-in-out 0s 1 forwards;
 }
 
 .song-data-fake-container{
