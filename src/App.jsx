@@ -216,7 +216,11 @@ function App() {
       </form>
 
 
-      <div className="song-details-container">
+      <div className="song-details-container" style={
+        {
+          backgroundImage: songData.imageUrl
+        }
+      }>
         <div className="song-data-fake-container">
           <img src={songData.imageUrl} className='song-detail-bg'/>
         </div>

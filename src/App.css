@@ -58,7 +58,8 @@ form{
 
 .submit-link:active, .submit-link:hover{
     cursor: pointer;
-    background-color: var(--color-bg);
+    background-color: #fff;
+    box-shadow: 0px 2px 8px var(--color-bg);
     color: var(--color-primary);
 }
 

@@ -8,6 +8,7 @@
     height: fit-content;
     line-height: 26px;
     font-weight: 500;
+    transition: 2s;
     font-size: 16px;
 }
 
