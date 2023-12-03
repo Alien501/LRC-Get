@@ -54,6 +54,7 @@ form{
     font-weight: 700;
     margin-top: 10px;
     transition: 0.3s;
+    transition: 1000ms;
 }
 
 .submit-link:active, .submit-link:hover{
@@ -61,6 +62,8 @@ form{
     background-color: #fff;
     box-shadow: 0px 2px 8px var(--color-bg);
     color: var(--color-primary);
+    transform: translateY(-10px);
+    transition: 500ms;
 }
 
 .song-details-container{
@@ -168,4 +171,16 @@ form{
     }100%{
         opacity: 1;
     }
+}
+
+.btn-clear {
+    display: block;
+    background-color: red;
+    outline-color: red;
+    border-color: red;
+    margin: 10px auto;
+}
+
+.btn-clear:hover {
+    color: red;
 }

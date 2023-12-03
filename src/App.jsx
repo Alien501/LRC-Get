@@ -100,8 +100,7 @@ function App() {
                         )
                       }
                     }else{
-                      lo
-                          return {synced: 'Synced Lyrics not found!',
+                        return {synced: 'Synced Lyrics not found!',
                       plain: 'Plain Lyrics not found!'}
                     }
                   }
@@ -204,6 +203,26 @@ function App() {
     URL.revokeObjectURL(url)
   }
 
+  function clearBtn(event) {
+    event.preventDefault();
+    setSongUrl('')
+    setSongData(prevData => {
+      return {
+        id: 0,
+        songName: 'Song Name',
+        artistName: 'Artist Name',
+        albumName: 'Album Name',
+        isDataFetched: true,
+        songLyrics: 'Song Lyrics',
+        songLyricsSynced: 'Synced Lyrics',
+        songLyricsPlain: 'Plain Lyrics',
+        songDur: '',
+        isError: false,
+        imageUrl: defaultImg
+      }
+    })
+  }
+
   return (
     <div className="app-container">
       <HeaderTop />
@@ -213,6 +232,7 @@ function App() {
           <input type="text" className="form-link-input" name="songUrl" placeholder='Enter Spotify URL' value={songUrl} onChange={onUrlChange}/>
           <button className="submit-link">Fetch Lyrics</button>
         </div>
+        <button className="submit-link btn-clear" onClick={clearBtn}>Clear</button>
       </form>
 
 
