@@ -35,7 +35,7 @@
 .icon {
     font-size: 30px;
     user-select: none;
-    animation: pushUp 1s ease-in-out 0s infinite alternate;
+    animation: pushUp 3s ease-in-out 0s infinite alternate;
 }
 
 .query-icon-container:hover, .query-icon-container:active{
@@ -50,7 +50,7 @@
     }50%{
         transform: translateY(3px) rotateZ(-10deg);
     }100%{
-        transform: translateY(0px) rotateZ(0deg);
+        transform: translateY(0px) rotateZ(-200deg);
     }
 }
 
@@ -71,12 +71,15 @@
     align-items: center;
     /* overflow-y: scroll; */
     overflow-x: hidden;
+    scale: 1;
     transition: 0.3s;
 }
 
 .query-modal-container{
     position: fixed;
     top: -1000px;
+    scale: 0;
+    left: -50%;
 }
 
 .query-container{
@@ -141,4 +144,3 @@
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
 }
-

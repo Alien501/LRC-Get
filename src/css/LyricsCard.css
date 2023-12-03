@@ -36,6 +36,7 @@
 .fake-cont{
     width: 100%;
     position: relative;
+    background-color: transparent !important;
 }
 
 .download-content{

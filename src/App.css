@@ -32,6 +32,8 @@ form{
     font-size: 16px;
     font-weight: 600;
     transition: 0.3s;
+    animation: moveUp 0.4s ease-in 0.1s 1  backwards;
+
 }
 
 .form-link-input::placeholder{
@@ -44,6 +46,7 @@ form{
     outline-color: var(--color-primary);
 }
 
+
 .submit-link{
     width: 130px;
     height: 40px;
@@ -53,8 +56,8 @@ form{
     border-radius: 30px;
     font-weight: 700;
     margin-top: 10px;
-    transition: 0.3s;
-    transition: 1000ms;
+    transition: color 0.3s, 1000ms;
+    animation: moveUp 0.4s ease-in 0s 1  backwards;
 }
 
 .submit-link:active, .submit-link:hover{
@@ -62,8 +65,8 @@ form{
     background-color: #fff;
     box-shadow: 0px 2px 8px var(--color-bg);
     color: var(--color-primary);
-    transform: translateY(-10px);
-    transition: 500ms;
+    transform: translateY(-5px);
+    transition: 300ms;
 }
 
 .song-details-container{
@@ -91,12 +94,9 @@ form{
     border-radius: 5px;
     transition: 0.3s;
     margin-top: 8px;
+    font-size: 16px;
 }
 
-.song-detail:hover{
-    cursor: pointer;
-    background-color: var(--color-primary-bg);
-}
 
 .footer{
     display: block;
@@ -179,8 +179,20 @@ form{
     outline-color: red;
     border-color: red;
     margin: 10px auto;
+    animation-delay: 0.3s;
 }
 
 .btn-clear:hover {
     color: red;
+}
+
+
+@keyframes moveUp {
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }

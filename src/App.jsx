@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import LyricsCard from './components/LyricsCard'
-import defaultImg from './assets/android-chrome-192x192.png'
+import defaultImg from '../public/android-chrome-192x192.png'
 import HeaderTop from './components/Header'
 
 function App() {

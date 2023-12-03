@@ -1,6 +1,6 @@
-This favicon was generated using the following graphics from Twitter Twemoji:
+This favicon was generated using the following font:
 
-- Graphics Title: 1f92a.svg
-- Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
-- Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/1f92a.svg
-- Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- Font Title: Josefin Sans
+- Font Author: Copyright 2010 The Josefin Sans Project Authors (https://github.com/ThomasJockin/JosefinSansFont-master), with Reserved Font Name "Josefin Sans".
+- Font Source: http://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_DjQXMFrLgTsQV0.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
