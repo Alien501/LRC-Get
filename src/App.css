@@ -63,6 +63,7 @@ form{
     justify-content: safe;
     align-items: center;
     font-size: 14px;
+    box-shadow: 1px 2px 10px rgba(42, 17, 166, 0.2);
 }
 
 .submit-link span{
@@ -84,7 +85,7 @@ form{
     padding: 20px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.4);
+    box-shadow: 1px 2px 10px rgba(42, 17, 166, 0.1);
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -219,6 +220,7 @@ form{
     align-items: center;
     font-size: 14px;
     padding: 5px;
+    box-shadow: 1px 2px 10px rgba(255, 255, 255, 0.2);
     width: max-content;
 }
 
