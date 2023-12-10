@@ -7,6 +7,7 @@ import HeaderTop from './components/Header'
 import lrclibGetSign from './util/lrclib'
 import lrclibGetQ from './util/lrclibQ'
 import soptifyGetLyrics from './util/spotify'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   const [songData, setSongData] = useState({
@@ -218,7 +219,7 @@ function App() {
         <div className="song-data-fake-container">
           <img src={songData.imageUrl} className='song-detail-bg'/>
         </div>
-        {(!songData.isDataFetched && songData.isError) && <h3>Couldn't fetch data check with url</h3>}
+        {(!songData.isDataFetched && songData.isError) && <h6>Couldn't fetch data check with url</h6>}
        <div className="song-detail">
           {songData.songName}
         </div>
@@ -276,6 +277,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      <Analytics />
     </div>
   )
 }
