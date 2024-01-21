@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function soptifyGetLyrics(songUrl){
     try{
-        const try3 = await axios.get(`https://spotify-lyric-api-984e7b4face0.herokuapp.com/?url=${songUrl}&format=lrc`)
+        const try3 = await axios.get(`https://spotify-lyrics-api-cyan.vercel.app/?url=${songUrl}&format=lrc`);
         if(try3.status == 200){
           if(try3.data.error === false && try3.data.syncType === "LINE_SYNCED"){
             return{

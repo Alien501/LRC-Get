@@ -38,7 +38,7 @@ export default function HeaderTop(){
                         What type of links are supported?
                     </div>
                     <div className="query-answer">
-                    Currently the site supports only link from Spotify, soon support from Youtube music will be added
+                    Currently the site supports only link from Spotify, soon support for Youtube music will be added
                     </div>
                 </div>
 
