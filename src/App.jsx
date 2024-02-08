@@ -278,7 +278,7 @@ function App() {
         </div>
       </div>
 
-      <Analytics />
+      {/* <Analytics /> */}
     </div>
   )
 }
