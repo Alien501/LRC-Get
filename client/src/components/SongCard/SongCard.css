@@ -1,0 +1,18 @@
+.song-card {
+    width: 300px !important;
+    margin: 70px auto 10px auto;
+    background-color: var(--color-primary) !important;
+    color: #fff;
+    z-index: 10 !important;
+}
+
+.song-detail-container {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.font-bold {
+    font-weight: 600;
+}

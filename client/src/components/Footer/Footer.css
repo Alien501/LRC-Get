@@ -1,0 +1,12 @@
+.footer-link svg {
+    width: 15px;
+    height: 15px;
+}
+
+.footer-link {
+    display: grid;
+    place-content: center;
+    width: 30px !important;
+    height: 30px !important;
+    margin: 5px;
+}
