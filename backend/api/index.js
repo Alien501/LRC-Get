@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(express.json());
 app.use(cors(
-    {
-        origin: process.env.CURRENTDEPLOY
-    }
+    // {
+    //     origin: process.env.CURRENTDEPLOY
+    // }
 ));
 app.use(logger);
 
