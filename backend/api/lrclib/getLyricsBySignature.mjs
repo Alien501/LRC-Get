@@ -7,7 +7,7 @@ const getLyricsBySignature = async (artistName, songName, albumName, songDuratio
         if(res.data.length !== 0) {
             return {
                 syncedLyrics: (res.data[0].syncedLyrics !== null)? res.data[0].syncedLyrics.split('\n') : ['Synced Lyrics Not Found!'],
-                plainLyrics: (res.data[0].plainLyrics !== null)? res.data[0].plainLyrics.split('\n') : 'Plain Lyrics not found!',
+                plainLyrics: (res.data[0].plainLyrics !== null)? res.data[0].plainLyrics.split('\n') : ['Plain Lyrics not found!'],
                 foundSyncedLyrics: (res.data[0].syncedLyrics != null)? true: false,
                 foundPlainLyrics: (res.data[0].plainLyrics != null)? true: false
             }
