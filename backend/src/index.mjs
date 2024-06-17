@@ -24,6 +24,6 @@ setInterval(() => {
     console.log('Intialised Access Token');
 }, 3600000);
 
-app.listen(PORT, '0.0.0.0',() => {
+app.listen(PORT, () => {
     console.log('Server running on localhost:3000');
 })
