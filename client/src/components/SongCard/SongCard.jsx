@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader, Image, CardFooter } from "@nextui-org/react";
 import React from "react";
-import Logo from '../../assets/react.svg'
+import Logo from '../../assets/Logo.png';
 
 import './SongCard.css'
 
