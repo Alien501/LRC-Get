@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer'
 
 import { copyLyrics } from './util/copyLyrics'
 import { downloadLyrics } from './util/downloadLyrics'
-
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -110,6 +110,7 @@ function App() {
         handleDownload={handleDownload}
       />
       <Footer />
+      <Analytics />
     </>
   )
 }
