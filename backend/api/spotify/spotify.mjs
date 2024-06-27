@@ -17,6 +17,7 @@ const getAccessToken = async () => {
                 }
             }
         )
+        console.log('Updated Token');
         currentAccessToken = res.data.access_token;
     }catch(error){
         console.log(error);
