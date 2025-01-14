@@ -46,12 +46,12 @@ function App() {
     }else {
       setSongData(prev => {
         return {
-          songName: datao.data.songName,
-          albumName: datao.data.albumName,
-          artistName: datao.data.artistName,
-          albumImage: datao.data.imageUrl,
-          syncedLyrics: datao?.lyrics?.syncedLyrics?.map(lyric => <p className='text-small font-medium'>{lyric}</p>) || 'Not Found',
-          plainLyrics: datao?.lyrics?.plainLyrics?.map(lyric => <p className='text-small font-medium'>{lyric}</p>) || 'Not Found'
+          songName: datao?.data?.songName || 'Something went wrong!',
+          albumName: datao?.data?.albumName || '🙂',
+          artistName: datao?.data?.artistName|| 'Try again',
+          albumImage: datao?.data?.imageUrl || '',
+          syncedLyrics: datao?.lyrics?.syncedLyrics?.map(lyric => <p key={'lyrics'} className='text-small font-medium'>{lyric}</p>) || 'Not Found',
+          plainLyrics: datao?.lyrics?.plainLyrics?.map(lyric => <p key={'Something'} className='text-small font-medium'>{lyric}</p>) || 'Not Found'
         }
       });
     }

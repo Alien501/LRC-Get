@@ -19,7 +19,7 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
     ];
 
     const [currentTab, setCurrentTab] = useState('Plain');
-
+    console.log(LyricsTab)
     return(
         <div className="lyrics-card-container mt-5">
             <Card radius="sm" shadow="md">

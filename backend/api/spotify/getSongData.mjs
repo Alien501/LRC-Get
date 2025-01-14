@@ -1,5 +1,5 @@
 import axios from "axios";
-import { currentAccessToken } from "./spotify.mjs"
+import { currentAccessToken, getAccessToken } from "./spotify.mjs"
 
 const ENDPOINT = 'https://api.spotify.com/v1/tracks/'
 
@@ -7,11 +7,19 @@ const getSongData = async (url) => {
     try {
         const acktToken = currentAccessToken;
         if(acktToken === null) 
-            return {
-                        message: 'Internal server error',
-                        status: 500,
-                        error: 'Token expired'
-                    }
+        {
+            const res = await getAccessToken();
+            if(res) {
+                getSongData(url);
+            }else {
+                return {
+                            message: 'Internal server error',
+                            status: 500,
+                            error: 'Token expired'
+                        }
+            }
+        }
+            
         const songUrl = url.slice(31, 53);
         const res = await axios.get(
             ENDPOINT + songUrl,
