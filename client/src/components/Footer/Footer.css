@@ -10,3 +10,29 @@
     height: 30px !important;
     margin: 5px;
 }
+
+/* Ensure footer stays at bottom */
+footer {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Social links container */
+.social-links-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .social-links-container {
+        gap: 0.5rem;
+    }
+    
+    .footer-link {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}

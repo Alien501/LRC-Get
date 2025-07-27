@@ -1,20 +1,50 @@
-const downloadLyrics = (lyrics, songName, type) => {
-    // I'm Lazy to handle click when empty
-    try {
-        const lyric = (lyrics.map(l => l.props.children)).join('\n');
+export const downloadLyrics = (lyrics, songName, tabName) => {
+  try {
+    // If lyrics is an array of React elements, extract the text content
+    let textContent = '';
     
-        const lyricBlob = new Blob([lyric], {type: 'text/plain'});
-        const url = URL.createObjectURL(lyricBlob);
-        const file = document.createElement('a');
-        file.href = url;
-        file.download = `${songName}.${type === 'Synced'? 'lrc': 'txt'}`;
-        file.click();
-        URL.revokeObjectURL(url);
-    } catch (error) {
-        
+    if (Array.isArray(lyrics)) {
+      // Extract text from React elements
+      textContent = lyrics
+        .map(lyric => {
+          if (typeof lyric === 'string') {
+            return lyric;
+          }
+          // If it's a React element, try to get the text content
+          if (lyric && lyric.props && lyric.props.children) {
+            return lyric.props.children;
+          }
+          return '';
+        })
+        .filter(text => text)
+        .join('\n');
+    } else if (typeof lyrics === 'string') {
+      textContent = lyrics;
+    } else {
+      textContent = 'No lyrics available';
     }
-}
 
-export {
-    downloadLyrics
-}
+    // Create filename
+    const safeSongName = songName ? songName.replace(/[^a-z0-9]/gi, '_').toLowerCase() : 'lyrics';
+    const filename = `${safeSongName}_${tabName.toLowerCase()}.txt`;
+
+    // Create blob and download
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    
+    // Trigger download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Clean up
+    window.URL.revokeObjectURL(url);
+    
+    console.log(`Lyrics downloaded as ${filename}`);
+  } catch (error) {
+    console.error('Error downloading lyrics:', error);
+  }
+}; 

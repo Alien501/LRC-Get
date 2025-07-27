@@ -7,7 +7,7 @@
   ],
   "crons": [
     {
-      "path": "/api/spotify/spotify.mjs",
+      "path": "/api/spotify/refresh-token",
       "schedule": "*/55 * * * *"
     }
   ]

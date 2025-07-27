@@ -1,0 +1,210 @@
+/* App.css - Enhanced styling */
+
+/* Layout structure */
+.min-h-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom scrollbar for lyrics */
+.lyrics-card-container .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lyrics-card-container .overflow-y-auto::-webkit-scrollbar-track {
+  background: hsl(var(--nextui-colors-background-200));
+  border-radius: 3px;
+}
+
+.lyrics-card-container .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--nextui-colors-primary-300));
+  border-radius: 3px;
+}
+
+.lyrics-card-container .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--nextui-colors-primary-400));
+}
+
+/* Dark mode scrollbar */
+.dark .lyrics-card-container .overflow-y-auto::-webkit-scrollbar-track {
+  background: hsl(var(--nextui-colors-background-700));
+}
+
+.dark .lyrics-card-container .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--nextui-colors-primary-600));
+}
+
+.dark .lyrics-card-container .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--nextui-colors-primary-500));
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Enhanced button hover effects */
+.footer-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Skeleton loading states */
+.skeleton-placeholder {
+  background: linear-gradient(90deg, 
+    hsl(var(--nextui-colors-background-200)) 25%, 
+    hsl(var(--nextui-colors-background-300)) 50%, 
+    hsl(var(--nextui-colors-background-200)) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Empty state styling */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-state-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, 
+    hsl(var(--nextui-colors-primary-100)), 
+    hsl(var(--nextui-colors-secondary-100))
+  );
+}
+
+.dark .empty-state-icon {
+  background: linear-gradient(135deg, 
+    hsl(var(--nextui-colors-primary-900)), 
+    hsl(var(--nextui-colors-secondary-900))
+  );
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .empty-state {
+    padding: 1rem;
+  }
+  
+  .empty-state-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* Enhanced focus styles */
+.custom-focus:focus {
+  outline: 2px solid hsl(var(--nextui-colors-primary-500));
+  outline-offset: 2px;
+}
+
+/* Backdrop blur effect for navbar */
+.nav-top {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Smooth page transitions */
+.page-transition {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure footer positioning */
+footer {
+  margin-top: auto;
+  flex-shrink: 0;
+}

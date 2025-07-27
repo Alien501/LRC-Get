@@ -1,11 +1,15 @@
-import {Button, Navbar, NavbarBrand, NavbarContent, useDisclosure } from "@nextui-org/react";
+import {Button, Navbar, NavbarBrand, NavbarContent, useDisclosure, Tooltip } from "@nextui-org/react";
 import React from "react";
 import QueryModel from "../QueryModel/QueryModel";
+import { useTheme } from "../../context/ThemeContext";
+import { Sun, Moon, HelpCircle } from "lucide-react";
 
 import './NavbarTop.css';
 
 const NavbarTop = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const { theme, toggleTheme, isDark } = useTheme();
+    
     const accordianList = [
         {
             key: 1,
@@ -26,17 +30,47 @@ const NavbarTop = () => {
             content: 'Place the downloaded LRC file near the mp3 file you have, and open any offline music palyer, see lyrics and enjoy your party!'
         }
     ]
+    
     return (
         <>
-            <div className="shadow-sm nav-top">
+            <div className="shadow-sm nav-top backdrop-blur-md bg-background/60">
                 <Navbar className="mx-w-[100%]" height="60px">
                     <NavbarBrand className="flex-shrink-0">
-                        <p className="text-large font-semibold">LRC Get</p>
+                        <div className="flex items-center gap-3">
+                            <img 
+                                src="/android-chrome-192x192.png" 
+                                alt="LRC Get Logo" 
+                                className="w-8 h-8 rounded-lg shadow-sm"
+                            />
+                            <p className="text-large font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">
+                                LRC Get
+                            </p>
+                        </div>
                     </NavbarBrand>
-                    <NavbarContent className="flex-1 flex justify-end items-center" justify="end">
-                        <Button onPress={onOpen} isIconOnly color="primary" aria-label="Query">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                        </Button>
+                    <NavbarContent className="flex-1 flex justify-end items-center gap-2" justify="end">
+                        <Tooltip content="Toggle theme" placement="bottom">
+                            <Button 
+                                onPress={toggleTheme} 
+                                isIconOnly 
+                                variant="light" 
+                                color="primary" 
+                                aria-label="Toggle theme"
+                                className="transition-all duration-200 hover:scale-110"
+                            >
+                                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                            </Button>
+                        </Tooltip>
+                        <Tooltip content="Help & FAQ" placement="bottom">
+                            <Button 
+                                onPress={onOpen} 
+                                isIconOnly 
+                                color="primary" 
+                                aria-label="Query"
+                                className="transition-all duration-200 hover:scale-110"
+                            >
+                                <HelpCircle size={20} />
+                            </Button>
+                        </Tooltip>
                     </NavbarContent>
                 </Navbar>
             </div>

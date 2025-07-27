@@ -2,17 +2,142 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Custom font variables */
 :root {
-  --color-primary: #0066FF;
-  --color-secondary: #3F8CFF;
-  --color-tertiary: #80B3FF;
-  --color-tertiary-2: #E5F0FF;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-display: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-
+/* Base font settings */
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: var(--font-primary);
+}
+
+/* Display fonts for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Special styling for main heading */
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Body text improvements */
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Button text */
+button, .btn {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Input text */
+input, textarea, select {
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+/* Card titles and important text */
+.card-title, .font-semibold, .font-bold {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Gradient text improvements */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Navbar brand */
+.navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Footer text */
+footer {
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid hsl(var(--nextui-colors-primary-500));
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--nextui-colors-background-200));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--nextui-colors-primary-300));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--nextui-colors-primary-400));
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--nextui-colors-background-700));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--nextui-colors-primary-600));
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--nextui-colors-primary-500));
 }
