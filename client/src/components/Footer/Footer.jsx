@@ -28,7 +28,7 @@ const Footer = () => {
                                 isIconOnly 
                                 as={Link} 
                                 target="_blank" 
-                                href="https://www.linkedin.com/in/vignesh-chellapandi-2207b5257/" 
+                                href="https://www.linkedin.com/in/vignesh501" 
                                 className="footer-link transition-all duration-200 hover:scale-110"
                             >
                                 <Linkedin size={20} />
@@ -73,7 +73,7 @@ const Footer = () => {
                                 isIconOnly 
                                 as={Link} 
                                 target="_blank" 
-                                href="mailto:cvignesh404@gmail.com" 
+                                href="https://t.me/Alien_501" 
                                 className="footer-link transition-all duration-200 hover:scale-110"
                             >
                                 <MessageCircle size={20} />
