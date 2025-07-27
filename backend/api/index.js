@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(express.json());
 app.use(cors(
-    // {
-    //     origin: ['https://lrc-get-new.vercel.app/', 'http://localhost:5173/']
-    // }
+    {
+        origin: ['https://lrc-get-new.vercel.app/', 'https://lrc-get.alien501.in/']
+    }
 ));
 app.use(logger);
 
