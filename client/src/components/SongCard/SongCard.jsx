@@ -46,7 +46,7 @@ const SongCard = ({songName, albumName, artistName, albumImage}) => {
                 alt="Card background"
                 className="z-10 w-full h-full object-cover"
                 src={albumImage || Logo}
-                height={100}
+                height={300}
                 width={100}
             />
             <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">

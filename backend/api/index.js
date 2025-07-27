@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors(
     {
-        origin: ['https://lrc-get-new.vercel.app/', 'https://lrc-get.alien501.in/']
+        // origin: ['https://lrc-get-new.vercel.app/', 'https://lrc-get.alien501.in/']
     }
 ));
 app.use(logger);
