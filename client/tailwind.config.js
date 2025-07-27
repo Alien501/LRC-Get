@@ -7,6 +7,6 @@ export default {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [nextui()],  
 }
 
