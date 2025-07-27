@@ -14,13 +14,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs22.x"
-    }
-  },
-  "env": {
-    "NODE_VERSION": "22.x"
-  }
+  ]
 } 
