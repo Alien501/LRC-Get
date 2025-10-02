@@ -10,14 +10,12 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
         {
             id: "Plain",
             label: "Plain Lyrics",
-            content: syncedLyrics,
-            count: Array.isArray(syncedLyrics) ? syncedLyrics.length : 0
+            content: syncedLyrics
         },
         {
             id: "Synced",
             label: "Synced Lyrics",
-            content: plainLyrics,
-            count: Array.isArray(plainLyrics) ? plainLyrics.length : 0
+            content: plainLyrics
         }
     ];
 
@@ -33,13 +31,6 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
                     <CardHeader className="flex-col pb-0">
                         <div className="flex items-center justify-between w-full mb-4">
                             <h3 className="text-xl font-bold text-foreground">Lyrics</h3>
-                            <Chip 
-                                color="default" 
-                                variant="flat" 
-                                size="sm"
-                            >
-                                No lyrics
-                            </Chip>
                         </div>
                         <Tabs 
                             aria-label="Lyrics Tab" 
@@ -48,28 +39,17 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
                             variant="underlined"
                             isDisabled
                             classNames={{
-                                tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+                                tabList: "gap-12 w-full relative rounded-none p-0 border-b border-divider",
                                 cursor: "w-full bg-primary",
-                                tab: "max-w-fit px-0 h-12",
-                                tabContent: "group-data-[selected=true]:text-primary"
+                                tab: "max-w-fit px-4 h-12",
+                                tabContent: "group-data-[selected=true]:text-primary",
                             }}
                         >
                             {
                                 (item) => 
                                     <Tab 
                                         key={item.id} 
-                                        title={
-                                            <div className="flex items-center space-x-2">
-                                                <span>{item.label}</span>
-                                                <Chip 
-                                                    size="sm" 
-                                                    variant="flat" 
-                                                    color="default"
-                                                >
-                                                    0
-                                                </Chip>
-                                            </div>
-                                        }
+                                        title={item.label}
                                     >
                                         <div className="p-6">
                                             <div className="text-center py-12">
@@ -115,13 +95,6 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
                 <CardHeader className="flex-col pb-0">
                     <div className="flex items-center justify-between w-full mb-4">
                         <h3 className="text-xl font-bold text-foreground">Lyrics</h3>
-                        <Chip 
-                            color="primary" 
-                            variant="flat" 
-                            size="sm"
-                        >
-                            {LyricsTab.find(tab => tab.id === currentTab)?.count || 0} lines
-                        </Chip>
                     </div>
                     <Tabs 
                         onSelectionChange={(k) => setCurrentTab(prev => k)} 
@@ -130,28 +103,17 @@ const LyricsCard = ({syncedLyrics, plainLyrics, handleCopy, handleDownload}) => 
                         color="primary"
                         variant="underlined"
                         classNames={{
-                            tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+                            tabList: "gap-12 w-full relative rounded-none p-0 border-b border-divider",
                             cursor: "w-full bg-primary",
-                            tab: "max-w-fit px-0 h-12",
-                            tabContent: "group-data-[selected=true]:text-primary"
+                            tab: "max-w-fit px-4 h-12",
+                            tabContent: "group-data-[selected=true]:text-primary",
                         }}
                     >
                         {
                             (item) => 
                                 <Tab 
                                     key={item.id} 
-                                    title={
-                                        <div className="flex items-center space-x-2">
-                                            <span>{item.label}</span>
-                                            <Chip 
-                                                size="sm" 
-                                                variant="flat" 
-                                                color={item.id === 'Plain' ? 'secondary' : 'primary'}
-                                            >
-                                                {item.count}
-                                            </Chip>
-                                        </div>
-                                    }
+                                    title={item.label}
                                 >
                                     <div className="p-6">
                                         <div className="max-h-96 overflow-y-auto space-y-2 pr-2">

@@ -26,7 +26,8 @@ export const downloadLyrics = (lyrics, songName, tabName) => {
 
     // Create filename
     const safeSongName = songName ? songName.replace(/[^a-z0-9]/gi, '_').toLowerCase() : 'lyrics';
-    const filename = `${safeSongName}_${tabName.toLowerCase()}.txt`;
+    const fileExtension = tabName === 'Synced' ? 'lrc' : 'txt';
+    const filename = `${safeSongName}_${tabName.toLowerCase()}.${fileExtension}`;
 
     // Create blob and download
     const blob = new Blob([textContent], { type: 'text/plain' });

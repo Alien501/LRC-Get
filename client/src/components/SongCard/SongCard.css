@@ -4,6 +4,8 @@
     background-color: var(--color-primary) !important;
     color: #fff;
     z-index: 10 !important;
+    position: relative;
+    overflow: hidden;
 }
 
 .song-detail-container {
@@ -15,4 +17,38 @@
 
 .font-bold {
     font-weight: 600;
+}
+
+/* Adaptive text contrast for images */
+.adaptive-text {
+    position: relative;
+    color: white;
+    mix-blend-mode: difference;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(255, 255, 255, 0.3),
+        0 0 4px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.adaptive-text-small {
+    position: relative;
+    color: white;
+    mix-blend-mode: difference;
+    text-shadow: 
+        1px 1px 1px rgba(0, 0, 0, 0.8),
+        -1px -1px 1px rgba(255, 255, 255, 0.3),
+        0 0 2px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Empty state card styling */
+.song-card.empty-state {
+    background: linear-gradient(135deg, rgba(var(--color-primary), 0.1), rgba(var(--color-secondary), 0.1));
+    min-height: 300px;
+}
+
+.song-card.empty-state .default-logo {
+    opacity: 0.4;
+    filter: blur(0.5px);
 }

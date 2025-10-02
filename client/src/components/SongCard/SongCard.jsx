@@ -10,10 +10,20 @@ const SongCard = ({songName, albumName, artistName, albumImage}) => {
     
     if (!hasSongData) {
         return (
-            <Card isFooterBlurred shadow="lg" className="song-card w-full h-[300px] col-span-12 sm:col-span-7 overflow-hidden">
-                <div className="w-full h-full relative">
-                    {/* Background gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-secondary-50 to-primary-100 dark:from-primary-950 dark:via-secondary-950 dark:to-primary-900"></div>
+            <Card isFooterBlurred shadow="lg" className="song-card empty-state w-full h-[300px] col-span-12 sm:col-span-7 overflow-hidden">
+                {/* Default Logo Image */}
+                <Image
+                    removeWrapper
+                    alt="Default logo"
+                    className="z-0 w-full h-full object-contain default-logo"
+                    src={Logo}
+                    height={300}
+                    width={100}
+                />
+                
+                <div className="absolute inset-0 w-full h-full">
+                    {/* Background gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-50/80 via-secondary-50/80 to-primary-100/80 dark:from-primary-950/80 dark:via-secondary-950/80 dark:to-primary-900/80"></div>
                     
                     {/* Animated background elements */}
                     <div className="absolute inset-0 overflow-hidden">
@@ -21,7 +31,6 @@ const SongCard = ({songName, albumName, artistName, albumImage}) => {
                         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary-200 dark:bg-secondary-800 rounded-full opacity-20 animate-pulse" style={{animationDelay: '1s'}}></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-primary-300 dark:bg-primary-700 rounded-full opacity-10 animate-pulse" style={{animationDelay: '2s'}}></div>
                     </div>
-                    
                 </div>
                 
                 <CardFooter className="absolute bg-black/30 backdrop-blur-sm bottom-0 z-10 border-t-1 border-white/20">
@@ -49,7 +58,7 @@ const SongCard = ({songName, albumName, artistName, albumImage}) => {
                 height={300}
                 width={100}
             />
-            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+            <CardFooter className="absolute bg-black/50 backdrop-blur-sm bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
                 <div className="flex flex-grow gap-2 items-center">
                 <Image
                     alt="Breathing app icon"
@@ -57,8 +66,8 @@ const SongCard = ({songName, albumName, artistName, albumImage}) => {
                     src={albumImage || Logo}
                 />
                 <div className="flex flex-col">
-                    <p className="text-lg font-bold text-white">{songName}</p>
-                    <p className="text-tiny text-white uppercase font-bold">{albumName}</p>
+                    <p className="text-lg font-bold adaptive-text">{songName}</p>
+                    <p className="text-tiny uppercase font-bold adaptive-text-small">{albumName}</p>
                 </div>
                 </div>
             </CardFooter>
